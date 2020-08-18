@@ -28,9 +28,16 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * In counter 2, a variable named count is created and given a number of zero, while a function called counter2() increments count by 1 every time it's invoked. In counter1, the counterMaker() function is creating a variable, as well as returning the counter() function which then inceases the count by 1.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
  * 
+ * counter1 code uses a closure because the counter() function is accesing the outer function scope by using the variable count. 
+ * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
+ * 
+ * counter1 code would be better when we want to have different counters, like counter 1 = counterMaker(), counter 1 = counterMaker(), etc. And counter2 code would be better for just 1 single count.
+ * 
  *
 */
 
@@ -58,9 +65,10 @@ Write a function called `inning` that returns a random number of points that a t
 
 function inning(/*Code Here*/){
 
-    /*Code Here*/
-
+    return Math.round(Math.random() * 2);
 }
+
+console.log(inning());
 
 /* Task 3: finalScore()
 
@@ -76,11 +84,16 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, numberInnings){
 
-  /*Code Here*/
-
+  let finalObject = {
+    "Home": inning() + numberInnings,
+    "Away": inning() + numberInnings,
+  }
+  return finalObject;
 }
+
+console.log(finalScore(inning, 9));
 
 /* Task 4: 
 
@@ -103,8 +116,11 @@ and returns the score at each pont in the game, like so:
 Final Score: awayTeam - homeTeam */
 
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(getInningScore, inning, numberInnings) {
+  for (i = 0; i < numberInnings; i++) {
+    console.log(i + "inning: " + finalObject.Home)
+  }
 }
 
+console.log(scoreboard(finalScore, inning, 9));
 
